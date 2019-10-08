@@ -1,3 +1,5 @@
+## init 初始化
+
 ```
 mkdir hello_world
 cd hello_world
