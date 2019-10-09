@@ -13,7 +13,6 @@ const http = require('http');
 app.set('imgPath', '/static/img');
 
 app.all('*', (req, res, next) => {
-    res.writeHead(200, { "Content-Type": "text/plain" });
     console.log('this is necessary middleware');
     next();
 });
@@ -24,6 +23,18 @@ app.get('/', (req, res) => {
 
 app.get('/about', (req, res) => {
     res.end('About Page!');
+});
+
+app.get('/redirect', (req, res) => {
+    res.redirect('http://google.com');
+});
+
+app.get('/redirect404', (req, res) => {
+    res.redirect(404, '/about');
+});
+
+app.get('/render', (req, res) => {
+   res.render('index', {message: 'this is render message!'});
 });
 
 app.get('*', (req, res) => {
