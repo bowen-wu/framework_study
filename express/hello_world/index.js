@@ -10,6 +10,8 @@ const http = require('http');
 
 // const routing = routes(app);
 
+app.set('imgPath', '/static/img');
+
 app.all('*', (req, res, next) => {
     res.writeHead(200, { "Content-Type": "text/plain" });
     console.log('this is necessary middleware');
@@ -17,7 +19,7 @@ app.all('*', (req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-    res.end('Welcome to the homepage!');
+    res.end(`Welcome to the homepage! img path is ${app.get('imgPath')}`);
 });
 
 app.get('/about', (req, res) => {
