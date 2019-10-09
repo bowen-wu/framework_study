@@ -68,3 +68,14 @@ const routing = routes(app);
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 ```
+
+如果需要指定 ` HTTP ` 头信息，回调函数就必须换一种写法，需要使用 ` setHeader ` 方法与 ` end ` 方法
+
+```
+app.get('/', (req, res) => {
+   const body = 'hello world';
+   res.setHeader('Content-Type', 'text/plain');
+   res.setHeader('Content-Length', body.length);
+   res.end(body); 
+});
+```
