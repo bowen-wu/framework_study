@@ -1,7 +1,7 @@
 const routes = require('./routes');
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 1337;
 const http = require('http');
 
 
@@ -10,18 +10,21 @@ const http = require('http');
 
 // const routing = routes(app);
 
-app.use('/home', (req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
+app.all('*', (req, res, next) => {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    console.log('this is necessary middleware');
+    next();
+});
+
+app.get('/', (req, res) => {
     res.end('Welcome to the homepage!');
 });
 
-app.use('/about', (req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
+app.get('/about', (req, res) => {
     res.end('About Page!');
 });
 
-app.use((req, res) => {
-    res.writeHead(404, {'Content-Type': 'text/plain'});
+app.get('*', (req, res) => {
     res.end('404 Error!');
 });
 
