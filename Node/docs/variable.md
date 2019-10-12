@@ -1,5 +1,7 @@
 ## 全局对象和全局变量
 
+**注： 来自阮一峰老师的 [JavaScript 标准参考教程](http://javascript.ruanyifeng.com/nodejs/basic.html#toc6)**
+
 ` Node.js ` 提供以下几个全局对象，它们是所有模块都可以调用的
 
 - ` global ` => 表示 ` Node ` 所在的全局环境，类似于浏览器的 ` window ` 对象。需要注意的是，如果在浏览器中声明一个全局变量，实际上是声明了一个全局对象的属性，比如 ` var x = 1 ` 等同于设置 ` window.x = 1 `，但是 ` Node ` 不是这样，至少在模块中不是这样（` REPL ` 环境的行为与浏览器一致）。在模块文件中，声明 ` var x = 1 `，该变量不是 ` global ` 对象的属性，` global.x === undefined `。这是因为模块的全局变量都是该模块私有的，其他模块无法取到。
