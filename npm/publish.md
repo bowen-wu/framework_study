@@ -34,7 +34,7 @@ npm publish
 
 安装
 ```
-yarn -g add <packageName>
+yarn global add <packageName>
 ```
 
 如果要更新，将 ` package.json ` 中的 ` version ` 改掉，之后重新 ` npm publish ` 即可
